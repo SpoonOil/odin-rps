@@ -58,9 +58,10 @@ let playerWins = 0;
 
 function printResults(message) {
     if (playerWins == 5 || cpuWins == 5) {
-        resultsHeader.textContent = message;
+        message += ' GG';
     }
-    results.innerHTML = (`CPU choice was: ${cpuChoice} <br> The score is: Player ${playerWins} - CPU ${cpuWins}`)
+    resultsHeader.textContent = message;
+    results.innerHTML = (`CPU choice was: ${cpuChoice.toUpperCase()} <br> The score is: Player ${playerWins} - CPU ${cpuWins}`)
 }
 function runGame(playerChoice) {
     // for (let gamesToPlay = 5; gamesToPlay > 0; gamesToPlay--) {
@@ -91,13 +92,13 @@ function runGame(playerChoice) {
     // }
 }
 
-// const buttons = document.querySelectorAll('.playRound');
+const buttons = document.querySelectorAll('.playRound');
 
-// buttons.forEach(button, () => addEventListener('click', buttonClicked))
+buttons.forEach(button => button.addEventListener('click', buttonClicked))
 
-// function buttonClicked() {
-
-// }
+function buttonClicked(e) {
+    e.target.classList.add('active')
+}
 
 const scissorsBtn = document.querySelector('.scissorsBtn');
 const rockBtn = document.querySelector('.rockBtn');
@@ -108,3 +109,9 @@ const resultsHeader = document.querySelector('h1.header');
 scissorsBtn.addEventListener('click', () => runGame('scissors'));
 rockBtn.addEventListener('click', () => runGame('rock'));
 paperBtn.addEventListener('click', () => runGame('paper'));
+
+buttons.forEach(button => button.addEventListener('transitionend', removeTransition))
+function removeTransition (e) {
+    if (e.propertyName !== 'transform') return
+    e.target.classList.remove('active')
+}

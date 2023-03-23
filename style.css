@@ -1,0 +1,49 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+html {
+    height: 99%;
+}
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-color: skyblue;
+    border: solid black 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rps-container {
+    /* margin: 0 auto; */
+    border: solid 1px black;
+    height: 80%;
+    width:80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.buttons {
+    flex : 1;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons>button {
+    flex: 1;
+    transition: all 0.07s ease;
+}
+
+.results {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.active {
+    transform: scale(1.5);
+}
